@@ -4,15 +4,12 @@ from skimage.filters import median
 from skimage.morphology import ball
 import matplotlib.pyplot as plt
 import numpy as np
-from scipy.signal import convolve2d
 
 
 def main():
     print("Starting image processing...")
 
     # 1. Load an image
-    # First, let's ensure a sample image is available. This part assumes 'lena.jpg' is already downloaded.
-    # In a real GitHub scenario, you might have the image alongside main.py or provide a path.
     image_path = 'lena.jpg'
     try:
         original_image = load_image(image_path)
@@ -25,7 +22,6 @@ def main():
         return
 
     # 2. Suppress noise using a median filter
-    # Convert to uint8 for skimage if it's not already, as median expects specific types.
     image_for_median = original_image.astype(np.uint8)
     clean_image = median(image_for_median, ball(3))
     print(f"Noise suppressed. Clean image shape: {clean_image.shape}, dtype: {clean_image.dtype}")
@@ -35,9 +31,7 @@ def main():
     print(f"Edge detection applied. Resulting shape: {edge_magnitude_image.shape}, dtype: {edge_magnitude_image.dtype}")
 
     # 4. Convert the resulting edgeMAG array into a binary array
-    # A fixed threshold is used here. For more advanced use, this could be dynamic.
-    threshold = 50 # This value might need adjustment based on the image
-    # Ensure the output is 0 or 255 for proper image saving and display
+    threshold = 50  # You can adjust this value if needed
     edge_binary = (edge_magnitude_image > threshold).astype(np.uint8) * 255
     print(f"Binary edge image created. Shape: {edge_binary.shape}, dtype: {edge_binary.dtype}")
 
@@ -50,7 +44,6 @@ def main():
     print(f"Binary edge image saved as {output_filename}")
     print("Image processing complete.")
 
+
 if __name__ == '__main__':
     main()
-
-!cat /content/image_utils.py
