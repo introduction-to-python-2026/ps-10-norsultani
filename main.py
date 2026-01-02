@@ -11,9 +11,9 @@ def main():
     print("Starting image processing...")
 
     # 1. Load an image
-    # First, let's ensure a sample image is available. This part assumes 'sample_image.jpg' is already downloaded.
+    # First, let's ensure a sample image is available. This part assumes 'lena.jpg' is already downloaded.
     # In a real GitHub scenario, you might have the image alongside main.py or provide a path.
-    image_path = 'sample_image.jpg'
+    image_path = 'lena.jpg'
     try:
         original_image = load_image(image_path)
         print(f"Image loaded successfully with shape: {original_image.shape}, dtype: {original_image.dtype}")
@@ -50,6 +50,7 @@ def main():
     print(f"Binary edge image saved as {output_filename}")
     print("Image processing complete.")
 
-if _name_ == '_main_':
+if __name__ == '__main__':
     main()
 
+!cat /content/image_utils.py
